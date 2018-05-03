@@ -52,17 +52,25 @@ Vue.component('demo-grid', {
   }
 })
 
-// bootstrap the demo
-var demo = new Vue({
-  el: '#demo',
-  data: {
-    searchQuery: '',
-    gridColumns: ['name', 'power'],
-    gridData: [
-      { name: 'Chuck Norris', power: Infinity },
-      { name: 'Bruce Lee', power: 9000 },
-      { name: 'Jackie Chan', power: 7000 },
-      { name: 'Jet Li', power: 8000 }
-    ]
-  }
-})
+axios.get('/file/data.json')
+  .then(function (response) {
+
+    var demo = new Vue({
+      el: '#demo',
+      data: {
+        searchQuery: '',
+        gridColumns: ['name', 'power'],
+        gridData: response.data
+      }
+    })
+    //alert( JSON.stringify(response)  );
+
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+
+
+
+
+
