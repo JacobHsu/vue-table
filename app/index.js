@@ -63,7 +63,8 @@ axios.get('/file/data.json')
         gridData: response.data
       }
     })
-    //alert( JSON.stringify(response)  );
+
+    console.log( JSON.stringify(response) );
 
   })
   .catch(function (error) {
