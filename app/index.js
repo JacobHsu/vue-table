@@ -52,7 +52,7 @@ Vue.component('demo-grid', {
   }
 })
 
-axios.get('/file/data.json')
+axios.get('data.json')
   .then(function (response) {
 
     var demo = new Vue({
