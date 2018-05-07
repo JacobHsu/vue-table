@@ -17,6 +17,7 @@
 
 `npm init`  
 `npm install gulp gulp-webserver -save-dev`  
+`npm install gulp-inline -save-dev`  
 
 gulpfile.js
 
@@ -24,5 +25,6 @@ gulpfile.js
 
 # gh-pages
 
-`$ git subtree push --prefix app origin gh-pages`  
+`$ git subtree push --prefix app origin gh-pages`    
+`$ git subtree push --prefix dist origin gh-pages`    
 https://jacobhsu.github.io/vue-table
