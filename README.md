@@ -23,8 +23,11 @@ gulpfile.js
 
 `$ gulp`  
 
-# gh-pages
+# gh-pages  
 
-`$ git subtree push --prefix app origin gh-pages`    
+`$ git subtree push --prefix app origin gh-pages`   
+
+`git push origin :gh-pages` 刪除遠端分支  
+
 `$ git subtree push --prefix dist origin gh-pages`    
 https://jacobhsu.github.io/vue-table
