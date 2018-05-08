@@ -17,6 +17,7 @@
 
 `npm init`  
 `npm install gulp gulp-webserver -save-dev`  
+`npm install gulp-uglify gulp-rename -save-dev` 
 `npm install gulp-inline -save-dev`  
 
 gulpfile.js
