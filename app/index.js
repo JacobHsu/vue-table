@@ -59,7 +59,7 @@ axios.get('data.json')
       el: '#demo',
       data: {
         searchQuery: '',
-        gridColumns: ['name', 'power'],
+        gridColumns: ['id', 'name', 'industry'],
         gridData: response.data
       }
     })
