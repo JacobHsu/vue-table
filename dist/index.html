@@ -22,19 +22,25 @@
 	          {{ key | capitalize }}
 	          <span class="arrow" :class="sortOrders[key] > 0 ? 'asc' : 'dsc'">
 	          </span>
-	        </th>
+					</th>
 	      </tr>
 	    </thead>
 	    <tbody>
 	      <tr v-for="entry in filteredData">
 	        <td v-for="key in columns">
 	          <div v-if="key=='id'"> 
-	          	<a :href="'https://goodinfo.tw/StockInfo/StockDividendSchedule.asp?STOCK_ID='+entry[key]" target="_blank"> {{entry[key]}}</a>
-	          </div>
+	          	<a :href="'https://goodinfo.tw/StockInfo/StockDividendSchedule.asp?STOCK_ID='+entry[key]" target="_blank">{{entry[key]}}</a>
+						</div>
+						<div v-else-if="key=='cmoney'"> 
+							<a :href="'http://www.cmoney.tw/follow/channel/stock-'+entry['id']" target="_blank">{{entry['id']}}</a>
+						</div>
+						<div v-else-if="key=='statementdog'"> 
+							<a :href="'https://statementdog.com/analysis/tpe/'+entry['id']+'/stock-health-check'" target="_blank">{{entry['id']}}</a>
+						</div>
 	          <div v-else> 
 	          	{{entry[key]}} 
 	          </div>
-	        </td>
+					</td>
 	      </tr>
 	    </tbody>
 	  </table>
@@ -50,7 +56,7 @@
 	</div>
 
 	<script>
-Vue.component("demo-grid",{template:"#grid-template",props:{data:Array,columns:Array,filterKey:String},data:function(){var r={};return this.columns.forEach(function(t){r[t]=1}),{sortKey:"",sortOrders:r}},computed:{filteredData:function(){var e=this.sortKey,o=this.filterKey&&this.filterKey.toLowerCase(),n=this.sortOrders[e]||1,t=this.data;return o&&(t=t.filter(function(r){return Object.keys(r).some(function(t){return-1<String(r[t]).toLowerCase().indexOf(o)})})),e&&(t=t.slice().sort(function(t,r){return((t=t[e])===(r=r[e])?0:r<t?1:-1)*n})),t}},filters:{capitalize:function(t){return t.charAt(0).toUpperCase()+t.slice(1)}},methods:{sortBy:function(t){this.sortKey=t,this.sortOrders[t]=-1*this.sortOrders[t]}}}),axios.get("data.json").then(function(t){new Vue({el:"#demo",data:{searchQuery:"",gridColumns:["id","name","industry"],gridData:t.data}});console.log(JSON.stringify(t))}).catch(function(t){console.log(t)});
+Vue.component("demo-grid",{template:"#grid-template",props:{data:Array,columns:Array,filterKey:String},data:function(){var e={};return this.columns.forEach(function(t){e[t]=1}),{sortKey:"",sortOrders:e}},computed:{filteredData:function(){var r=this.sortKey,o=this.filterKey&&this.filterKey.toLowerCase(),n=this.sortOrders[r]||1,t=this.data;return o&&(t=t.filter(function(e){return Object.keys(e).some(function(t){return-1<String(e[t]).toLowerCase().indexOf(o)})})),r&&(t=t.slice().sort(function(t,e){return((t=t[r])===(e=e[r])?0:e<t?1:-1)*n})),t}},filters:{capitalize:function(t){return t.charAt(0).toUpperCase()+t.slice(1)}},methods:{sortBy:function(t){this.sortKey=t,this.sortOrders[t]=-1*this.sortOrders[t]}}}),axios.get("data.json").then(function(t){new Vue({el:"#demo",data:{searchQuery:"",gridColumns:["id","name","industry","cmoney","statementdog"],gridData:t.data}});console.log(JSON.stringify(t))}).catch(function(t){console.log(t)});
 </script>
 </body>
 </html>

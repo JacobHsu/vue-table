@@ -22,19 +22,25 @@
 	          {{ key | capitalize }}
 	          <span class="arrow" :class="sortOrders[key] > 0 ? 'asc' : 'dsc'">
 	          </span>
-	        </th>
+					</th>
 	      </tr>
 	    </thead>
 	    <tbody>
 	      <tr v-for="entry in filteredData">
 	        <td v-for="key in columns">
 	          <div v-if="key=='id'"> 
-	          	<a :href="'https://goodinfo.tw/StockInfo/StockDividendSchedule.asp?STOCK_ID='+entry[key]" target="_blank"> {{entry[key]}}</a>
-	          </div>
+	          	<a :href="'https://goodinfo.tw/StockInfo/StockDividendSchedule.asp?STOCK_ID='+entry[key]" target="_blank">{{entry[key]}}</a>
+						</div>
+						<div v-else-if="key=='cmoney'"> 
+							<a :href="'http://www.cmoney.tw/follow/channel/stock-'+entry['id']" target="_blank">{{entry['id']}}</a>
+						</div>
+						<div v-else-if="key=='statementdog'"> 
+							<a :href="'https://statementdog.com/analysis/tpe/'+entry['id']+'/stock-health-check'" target="_blank">{{entry['id']}}</a>
+						</div>
 	          <div v-else> 
 	          	{{entry[key]}} 
 	          </div>
-	        </td>
+					</td>
 	      </tr>
 	    </tbody>
 	  </table>
