@@ -2,6 +2,12 @@
 
 [Grid Component Example](https://cn.vuejs.org/v2/examples/grid-component.html)  
 
+# data
+
+bin> `python data.py`  output `data.json`  
+
+https://jsoneditoronline.org/  
+
 # Bootstrap
 
 [getbootstrap](https://getbootstrap.com/)  
@@ -32,3 +38,16 @@ gulpfile.js
 
 `$ git subtree push --prefix dist origin gh-pages`    
 https://jacobhsu.github.io/vue-table
+
+
+$ npm init -y  
+$ npm install gh-pages --save-dev  
+
+package.json
+```js
+  "scripts": {
+	...
+    "deploy": "gh-pages -d dist"
+  },
+```
+$ npm run deploy  
